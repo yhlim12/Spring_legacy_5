@@ -105,7 +105,6 @@ public class NoticeController {
 	// List
 	@RequestMapping(value = "noticeList", method = RequestMethod.GET)
 	public ModelAndView boardList(@RequestParam(defaultValue = "1") int curPage, ModelAndView mv) throws Exception {
-	
 		
 		List<BoardVO> ar = noticeService.boardList(curPage);
 		mv.addObject("list", ar);

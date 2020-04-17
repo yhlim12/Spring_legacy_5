@@ -14,7 +14,7 @@
 					data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="${pageContext.request.contextPath}/notice/noticeList">Notice</a></li>
-						<li><a href="#">Page 1-2</a></li>
+						<li><a href="${pageContext.request.contextPath}/qna/qnaList">Qna</a></li>
 						<li><a href="#">Page 1-3</a></li>
 					</ul></li>
 				<li><a href="${pageContext.request.contextPath}/notice/noticeList">Notice</a></li>
