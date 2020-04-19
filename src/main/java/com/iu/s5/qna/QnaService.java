@@ -18,7 +18,7 @@ public class QnaService implements BoardService{
 
 	@Override
 	public List<BoardVO> boardList(int curPage) throws Exception {
-		// DB에서 글 10개씩 가져오기
+		// DB�뿉�꽌 湲� 10媛쒖뵫 媛��졇�삤湲�
 		int startRow = (curPage-1)*10+1;
 		int lastRow = curPage * 10;
 		Map<String,Integer> map = new HashMap<String, Integer>();
@@ -26,11 +26,11 @@ public class QnaService implements BoardService{
 		map.put("startRow", startRow);
 		map.put("lastRow", lastRow);
 		//--------------------------------------------------------
-		//1. 총글의 갯수
+		//1. 珥앷��쓽 媛��닔
 		long totalCount = qnaDAO.boardCount();
 	
 		
-		//2. 총 페이지의 갯수
+		//2. 珥� �럹�씠吏��쓽 媛��닔
 		long totalPage = totalCount/10;
 		if(totalCount%10!=0) {
 			totalPage++;
@@ -42,26 +42,24 @@ public class QnaService implements BoardService{
 	}
 	@Override
 	public BoardVO boardSelect(long num) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		qnaDAO.hitUpdate(num);
+		return qnaDAO.boardSelect(num);
 	}
 
 	@Override
 	public int boardWrite(BoardVO boardVO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return qnaDAO.boardWrite(boardVO);
 	}
 
 	@Override
 	public int boardUpdate(BoardVO boardVO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return qnaDAO.boardUpdate(boardVO);
 	}
 
 	@Override
 	public int boardDelete(long num) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return qnaDAO.boardDelete(num);
 	}
 
 }
