@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s5.board.BoardVO;
+import com.iu.s5.board.page.Pager;
 
 @Controller
 @RequestMapping("/notice/**")
@@ -104,10 +105,14 @@ public class NoticeController {
 
 	// List
 	@RequestMapping(value = "noticeList", method = RequestMethod.GET)
-	public ModelAndView boardList(@RequestParam(defaultValue = "1") int curPage, ModelAndView mv) throws Exception {
+	public ModelAndView boardList(Pager pager, ModelAndView mv) throws Exception {
+		System.out.println("kind : " + pager.getKind());
+		System.out.println("search : " + pager.getSearch());
 		
-		List<BoardVO> ar = noticeService.boardList(curPage);
+		List<BoardVO> ar = noticeService.boardList(pager);
+		System.out.println(pager.getTotalPage());
 		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
 		mv.setViewName("board/boardList");
 		return mv;
 	}

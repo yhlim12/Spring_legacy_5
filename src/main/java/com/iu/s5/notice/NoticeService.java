@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.iu.s5.board.BoardService;
 import com.iu.s5.board.BoardVO;
+import com.iu.s5.board.page.Pager;
 
 @Service
 public class NoticeService implements BoardService {
@@ -17,27 +18,14 @@ public class NoticeService implements BoardService {
 	private NoticeDAO noticeDAO;
 	
 	@Override
-	public List<BoardVO> boardList(int curPage) throws Exception {
+	public List<BoardVO> boardList(Pager pager) throws Exception {
 		// DB에서 글 10개씩 가져오기
-		int startRow = (curPage-1)*10+1;
-		int lastRow = curPage * 10;
-		Map<String,Integer> map = new HashMap<String, Integer>();
 		
-		map.put("startRow", startRow);
-		map.put("lastRow", lastRow);
-		//--------------------------------------------------------
-		//1. 총글의 갯수
-		long totalCount = noticeDAO.boardCount();
-	
+		pager.makeRow();
+		long totalCount = noticeDAO.boardCount(pager);
+		pager.makePage(totalCount);
 		
-		//2. 총 페이지의 갯수
-		long totalPage = totalCount/10;
-		if(totalCount%10!=0) {
-			totalPage++;
-		}
-		System.out.println(totalPage);
-		
-		return noticeDAO.boardList(map); 
+		return noticeDAO.boardList(pager); 
 	
 	}
 

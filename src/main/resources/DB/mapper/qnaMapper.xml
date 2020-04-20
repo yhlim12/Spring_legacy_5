@@ -14,7 +14,7 @@
 	<select id="boardList" parameterType="java.util.Map" resultType="com.iu.s5.qna.QnaVO">
 		select * from 
 			(select N.*,rownum R from 
-				(select * from notice order by num desc) N)
+				(select * from qna order by num desc) N)
 		where R between #{startRow} and #{lastRow}
 	</select>
 	

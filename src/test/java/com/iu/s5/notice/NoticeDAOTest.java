@@ -87,9 +87,10 @@ public class NoticeDAOTest extends AbstractTestCase{
 		
 	}
 	
-	public List<BoardVO> boardListTest()throws Exception{
-		return noticeDAO.boardList();
-	}
+	/*
+	 * public List<BoardVO> boardListTest()throws Exception{ return
+	 * noticeDAO.boardList(); }
+	 */
 	
 	/*
 	 * @Test public void boardDeleteTest() throws Exception{

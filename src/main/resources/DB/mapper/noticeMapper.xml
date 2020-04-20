@@ -4,16 +4,47 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.iu.s5.notice.NoticeDAO">
+
+	<sql id="search">
+		like '%'||#{search}||'%' and num>=1 order by num desc
+	</sql>
 	
 	<!-- 전체 글의 갯수 -->
-	<select id="boardCount" resultType="java.lang.Long">
+	<select id="boardCount" resultType="java.lang.Long" parameterType="com.iu.s5.board.page.Pager">
 		select count(num) from notice
+				<where>
+					<if test="kind == 'bt'">
+						title <include refid="search"></include>
+					</if>
+					
+					<if test="kind == 'bw'">
+						writer <include refid="search"></include>
+					</if>
+					
+					<if test="kind == 'bc'">
+						contents <include refid="search"></include>
+					</if>
+				</where>
+				
+				
 	</select>
 
-	<select id="boardList" parameterType="java.util.Map" resultType="com.iu.s5.notice.NoticeVO">
+	<select id="boardList" parameterType="com.iu.s5.board.page.Pager" resultType="com.iu.s5.notice.NoticeVO">
 		select * from 
 			(select N.*,rownum R from 
-				(select * from notice order by num desc) N)
+				(select * from notice where
+				<choose>
+					<when test="kind =='bw'">
+						writer
+					</when>
+					<when test="kind =='bt'">
+						title
+					</when>
+					<otherwise>
+						contents
+					</otherwise>
+				</choose>
+				<include refid="search"></include>) N)
 		where R between #{startRow} and #{lastRow}
 	</select>
 
