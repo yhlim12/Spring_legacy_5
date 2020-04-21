@@ -12,7 +12,7 @@
 <c:import url="../template/header.jsp"></c:import>
 <div class="container">
 		<h2>member Join Form</h2>
-		<form action="./memberJoin" method="POST">
+		<form action="./memberJoin" method="POST" enctype="multipart/form-data">
 
 			<div class="form-group">
 				<label for="id">ID:</label> <input type="text" class="form-control"
@@ -43,15 +43,19 @@
 					name="email">
 			</div>
 			
-				<div class="form-group">
+			<div class="form-group">
 				<label for="age:">age:</label> <input type="text"
-					class="form-control" id="age:" placeholder="Enter age:"
-					name="age:">
+					class="form-control" id="age" placeholder="Enter age:"
+					name="age">
 			</div>
 			
+			<div class="form-group">
+				<label for="pic:">Avatar:</label> <input type="file"
+					class="form-control" id="avatar" placeholder="Enter age:"
+					name="avatar">
+			</div>
 			
 
-		
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
 	</div>

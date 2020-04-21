@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s5.board.BoardVO;
 import com.iu.s5.notice.NoticeVO;
+import com.iu.s5.util.Pager;
 
 @Controller
 @RequestMapping("/qna/**")
@@ -26,36 +29,38 @@ public class QnaController {
 	}
 	
 	//List
-	@RequestMapping(value="qnaList", method = RequestMethod.GET)
-	public ModelAndView boardList(@RequestParam(defaultValue = "1") int curPage, ModelAndView mv)throws Exception{
+	@GetMapping("qnaList")
+	public ModelAndView boardList(Pager pager, ModelAndView mv)throws Exception{
 
-		List<BoardVO> ar =  qnaService.boardList(curPage);
-		mv.addObject("list", ar);
+		List<BoardVO> ar =  qnaService.boardList(pager);
 		mv.setViewName("board/boardList");
-		
+		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
+	
 		return mv;
 		
 	}
 	
 	//writter
-	@RequestMapping(value = "qnaWrite", method = RequestMethod.GET)
+	@GetMapping("qnaWrite")
 	public ModelAndView boardWrite(BoardVO boardVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/boardWrite");
 		return mv;
 	}
 	
-	@RequestMapping(value = "qnaWrite", method = RequestMethod.POST)
+	@PostMapping("qnaWrite")
 	public ModelAndView boardWrite(QnaVO qnaVO, ModelAndView mv) throws Exception {
-
 		int result = qnaService.boardWrite(qnaVO);
-		if (result > 0) {
-			mv.setViewName("redirect:./qnaList");
-		} else {
-			mv.addObject("result", "Write Fail");
-			mv.addObject("path", "./qnaList");
-			mv.setViewName("common/result");
+		String msg = "Qna Write Fail";
+		if(result>0) {
+			msg = "Qna Write Success";
 		}
+		
+		mv.addObject("result", msg);
+		mv.addObject("path", "./qnaList");
+		
+		mv.setViewName("common/result");
 		return mv;
 	}
 	
@@ -112,5 +117,31 @@ public class QnaController {
 			return path;
 		}
 
+		//Reply
+		
+		@GetMapping("qnaReply")
+		public ModelAndView boardReply(ModelAndView mv, long num) throws Exception{
+			mv.addObject("num", num);
+			mv.setViewName("board/boardReply");
+			return mv;
+		}
+		
+		@PostMapping("qnaReply")
+		public ModelAndView boardReply(ModelAndView mv, QnaVO qnaVO)throws Exception{
+			int result = qnaService.boardReply(qnaVO);
+			
+			if(result>0) {
+				mv.setViewName("redirect:./qnaList");
+			}else {
+				mv.addObject("result","Reply Write Fail");
+				mv.addObject("path", "./qnaList");
+				mv.setViewName("common/result");
+			}
+			
+			
+			return mv;
+		}
+		
+		
 	
 }

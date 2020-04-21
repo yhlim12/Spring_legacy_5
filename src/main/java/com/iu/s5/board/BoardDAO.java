@@ -4,7 +4,7 @@ package com.iu.s5.board;
 import java.util.List;
 import java.util.Map;
 
-import com.iu.s5.board.page.Pager;
+import com.iu.s5.util.Pager;
 
 public interface BoardDAO {
 	// 맴버 변수 상수

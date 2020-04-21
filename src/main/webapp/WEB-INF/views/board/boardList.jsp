@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +43,15 @@
 				<c:forEach items="${list}" var="vo">
 					<tr>
 						<td>${vo.num}</td>
-						<td><a href="./${board}Select?num=${vo.num}">${vo.title}</a></td>
+						<td>
+						
+						<c:catch>
+						<!-- for(int i=0; i<1 i++ -->
+							<c:forEach begin="1" end="${vo.depth}" >
+								--
+							</c:forEach>
+						</c:catch>
+						<a href="./${board}Select?num=${vo.num}">${vo.title}</a></td>
 						<td>${vo.writer}</td>
 						<td>${vo.regDate}</td>
 						<td>${vo.hit}</td>
@@ -70,7 +78,25 @@
 			</div>
 
 			<div>
-				<a href="./${board}Write" class="btn btn-danger">WRITE</a>
+				
+				<c:catch>
+				<c:choose>
+					<c:when test="${board eq 'notice'}">
+						<c:if test="${member.id eq 'admin'}">
+							<div>
+								<a href="./${board}Write" class="btn btn-danger">WRITE</a>
+							</div>
+						</c:if>
+						</c:when>
+					<c:otherwise>
+						<c:if test="${not empty member}">
+							<div>
+								<a href="./${board}Write" class="btn btn-danger">WRITE</a>
+							</div>
+						</c:if>
+					</c:otherwise>
+				</c:choose>
+				</c:catch>
 			</div>
 
 		</div>

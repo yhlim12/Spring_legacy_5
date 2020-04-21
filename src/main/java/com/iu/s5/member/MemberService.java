@@ -4,8 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.iu.s5.member.memberPage.MemberPager;
+import com.iu.s5.util.Pager;
 
 @Service
 public class MemberService {
@@ -13,19 +12,27 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	public List<MemberVO> memberList(MemberPager memberPager)throws Exception{
+	public List<MemberVO> memberList(Pager pager)throws Exception{
 		
-		memberPager.makeRow();
-		long totalCount = memberDAO.memberCount(memberPager);
-		memberPager.makePage(totalCount);
-		return memberDAO.memberList(memberPager);
+		pager.makeRow();
+		long totalCount = memberDAO.memberCount(pager);
+		pager.makePage(totalCount);
+		return memberDAO.memberList(pager);
 	}
 	
 	public int memberJoin(MemberVO memberVO)throws Exception{
 		return memberDAO.memberJoin(memberVO);
 	}
 	
-	public MemberVO memberLogin(MemberVO memberVO)throws Exception{
-		return memberDAO.memberLogin(memberVO);
+	public MemberVO memberLogin(MemberVO memberDTO)throws Exception{
+		return memberDAO.memberLogin(memberDTO);
+	}
+	
+	public int memberUpdate(MemberVO memberVO)throws Exception{
+		return memberDAO.memberUpdate(memberVO);
+	}
+	
+	public int memberDelete(MemberVO memberVO) throws Exception{
+		return memberDAO.memberDelete(memberVO);
 	}
 }
