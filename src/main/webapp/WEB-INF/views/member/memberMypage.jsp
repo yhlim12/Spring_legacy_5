@@ -18,7 +18,7 @@
 	<h1>Age : ${sessionScope.member.age}</h1>
 	<h1>
 		<div><a href="./fileDelete">File Delete</a></div>
-		<img alt="" src="../resources/memberUpload/${file.filename}">
+		<img alt="" src="../resources/memberUpload/${member.memberFileVO.filename}">
 	
 	</h1>
 	

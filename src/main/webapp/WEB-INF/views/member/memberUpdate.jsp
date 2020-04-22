@@ -47,11 +47,11 @@
 					name="age" value="${sessionScope.member.age}">
 			</div>
 			
-			<div class="form-group">
+	<%-- 		<div class="form-group">
 				<label for="file">File:</label> <input type="file"
 					class="form-control" id="avatar" 
-					name="avatar" value="${ }">
-			</div>
+					name="avatar" value="${}">
+			</div> --%>
 
 
 			<button type="submit" class="btn btn-default">Submit</button>
