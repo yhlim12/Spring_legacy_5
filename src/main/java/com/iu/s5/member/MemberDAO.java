@@ -39,5 +39,5 @@ public class MemberDAO {
 	public int memberDelete(MemberVO memberVO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"memberDelete", memberVO);
 	}
-
+	
 }

@@ -16,6 +16,11 @@
 	<h1>Email : ${sessionScope.member.email}</h1>
 	<h1>Phone : ${sessionScope.member.phone}</h1>
 	<h1>Age : ${sessionScope.member.age}</h1>
+	<h1>
+		<div><a href="./fileDelete">File Delete</a></div>
+		<img alt="" src="../resources/memberUpload/${file.filename}">
+	
+	</h1>
 	
 	<button class="btn btn-primary" id="update">Update</button>
 	<button class="btn btn-danger" id="del">Delete</button>
