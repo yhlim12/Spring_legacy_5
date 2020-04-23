@@ -12,7 +12,13 @@ public class BoardFileDAO {
 	
 	private final String NAMESPACE = "com.iu.s5.board.file.BoardFileDAO.";
 	
+	public BoardFileVO fileSelect(BoardFileVO boardFileVO)throws Exception{
+		return session.selectOne(NAMESPACE+"fileSelect",boardFileVO);
+	}
+	
 	public int fileInsert(BoardFileVO boardFileVO) throws Exception{
 		return session.insert(NAMESPACE+"fileInsert",boardFileVO);
 	}
+	
+	
 }

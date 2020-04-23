@@ -53,7 +53,7 @@ public class NoticeService implements BoardService {
 	public int boardWrite(BoardVO boardVO, MultipartFile [] files) throws Exception {
 		
 		
-		String path = servletContext.getRealPath("/resources/uploadNotice");
+		String path = servletContext.getRealPath("/resources/uploadnotice");
 		System.out.println(path);
 		//sequence 번호 받기
 		boardVO.setNum(noticeDAO.boardNum());

@@ -26,6 +26,15 @@
       <div class="panel-body"><h2>${vo.contents}</h2></div>
     </div>
 	
+	
+		<div>
+			<c:forEach items="${vo.boardFileVOs}" var="file">
+				<div>
+					<a href="../boardFile/fileDown?fileNum=${file.fileNum}&board=${file.board}">${file.oriName }</a>
+				</div>
+			</c:forEach>
+		</div>
+	
 		
 	</div>
 	
