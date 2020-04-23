@@ -78,6 +78,7 @@
 			</div>
 
 			<div>
+				<a href="./${board}Write" class="btn btn-danger">WRITE</a>
 				
 				<c:catch>
 				<c:choose>

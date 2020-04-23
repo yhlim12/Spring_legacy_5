@@ -16,5 +16,4 @@
  	<delete id="fileDelete" parameterType="String">
  		DELETE MEMBERFILE WHERE ID=#{id}
  	</delete>
- 	
  </mapper>

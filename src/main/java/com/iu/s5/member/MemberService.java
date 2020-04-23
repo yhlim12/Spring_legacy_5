@@ -61,10 +61,6 @@ public class MemberService {
 		return memberDAO.memberDelete(memberVO);
 	}
 	
-	public MemberFileVO fileSelect(String id)throws Exception{
-		return memberFileDAO.fileSelect(id);
-	}
-	
 	public int fileDelete(String id, HttpSession session)throws Exception{
 		MemberFileVO memberFileVO = memberFileDAO.fileSelect(id);
 		int result = memberFileDAO.fileDelete(id);
