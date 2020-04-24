@@ -1,5 +1,6 @@
 package com.iu.s5.notice;
 
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -82,14 +83,13 @@ public class NoticeController {
 
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
 	public ModelAndView boardWrite(NoticeVO noticeVO, ModelAndView mv, MultipartFile [] files) throws Exception {
-		
-		
+	
 		int result = noticeService.boardWrite(noticeVO,files);
 		if (result > 0) {
 			mv.setViewName("redirect:./noticeList");
 		} else {
 			mv.addObject("result", "Write Fail");
-			mv.addObject("path", "./noticeList");
+			mv.addObject("p ath", "./noticeList");
 			mv.setViewName("common/result");
 		}
 		return mv;

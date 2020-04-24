@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,13 +40,14 @@
 		
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
+		
 	</div>
-<script type="text/javascript">
-	// $("선택자 ").action();
-  $('#contents').summernote({
-	  height : 400
- });
-</script>
+		<script type="text/javascript">
+			// $("선택자 ").action();
+		  $('#contents').summernote({
+			  lang: 'ko-KR'
+		 });
+		</script>
 
 </body>
 </html>

@@ -15,7 +15,7 @@
 
 	<div class="container">
 		<h2>${board} Write Form</h2>
-		<form action="./${board}Write" method="POST" enctype = multipart/form-data>
+		<form action="./${board}Write" id="frm"  method="POST" enctype = multipart/form-data>
 
 			<div class="form-group">
 				<label for="TITLE">TITLE:</label> <input type="text" class="form-control"
@@ -24,37 +24,33 @@
 
 			<div class="form-group">
 				<label for="writer">WRITER:</label> <input type="text"
-					class="form-control" id="writer" placeholder="Enter writer"
+					class="form-control" id="writer" readonly="readonly" value="${member.id}" placeholder="Enter writer"
 					name="writer">
 			</div>
 
 			<div class="form-group">
 				<label for="contents">CONTENTS:</label> <textarea class="form-control"
-				row="20" id="contents" placeholder="Enter contents" name="contents"></textarea>
+				row="20" id="contents" name="contents"></textarea>
 			</div>
 			
-
+			<input type="button" id="add" class="btn btn-info" value="AddFile">
 			
-			<div class="form-group">
-				<label for="files">File:</label>
-				<input type="file" class="form-control" name="files"> 
-				<input type="file" class="form-control" name="files"> 
+			<div id="file">
+				
 			</div>
 			
-
-		
-			<button type="submit" class="btn btn-default">Submit</button>
+			 
+			<!-- contents Server null이 될때 -->
+			<!-- <input type ="hidden" name="contents" id="con"> -->
+			
+			<button type="button" id="btn" class="btn btn-default">Submit</button>
 		</form>
 	</div>
 
-<script type="text/javascript">
-	// $("선택자 ").action();
-  $('#contents').summernote({
-	  height : 400
- });
-	 
- 
+<script type="text/javascript" src="../resources/js/boardForm.js">
+
 </script>	
+
 
 
 </body>

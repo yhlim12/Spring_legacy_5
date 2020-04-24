@@ -71,4 +71,8 @@ public class MemberService {
 		}
 		return result;
 	}
+	
+	public MemberVO memberIdCheck(MemberVO memberVO)throws Exception{
+		return memberDAO.memberIdCheck(memberVO);
+	}
 }

@@ -154,5 +154,24 @@ public class MemberController {
 		int result = memberService.fileDelete(memberVO.getId(), session);
 		return "redirect:./memberMypage";
 	}
+	
+	@PostMapping("memberIdCheck")
+	public ModelAndView memberIdCheck(MemberVO memberVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = 0;
+	
+		memberVO = memberService.memberIdCheck(memberVO);
+		
+		if(memberVO!=null) {
+			result=0;
+		}else {
+			result=1;
+		}
+	
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		
+		return mv;
+	}
 
 }

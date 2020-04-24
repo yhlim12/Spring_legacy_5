@@ -99,4 +99,8 @@
 		delete member where id=#{id}
 	</delete>
 
+	<select id="memberIdCheck" parameterType="MemberVO" resultType="MemberVO">
+		SELECT id FROM MEMBER WHERE ID=#{id}
+	</select>
+
 </mapper>

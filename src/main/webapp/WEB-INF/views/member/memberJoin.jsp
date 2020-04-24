@@ -60,7 +60,22 @@
 		</form>
 	</div>
 
+<script type="text/javascript">
+	$("#id").blur(function() {
+		var id = $("#id").val();
+		$.post("./memberIdCheck",{id:id}, function(result) {
+			result = result.trim();
+			if(result==0){
+				alert("이미 존재하는 아이디입니다.");
+			}else{
+				alert("사용가능한 아이디입니다.")
+			}
+		});
+	});
 	
+	
+</script>
+
 
 </body>
 </html>
