@@ -25,7 +25,7 @@ public class NoticeService implements BoardService {
 	private NoticeDAO noticeDAO;
 	@Autowired
 	private FileSaver fileSaver;
-	//@Autowired
+	@Autowired
 	private ServletContext servletContext;
 	@Autowired
 	private BoardFileDAO boardFileDAO;
@@ -61,6 +61,7 @@ public class NoticeService implements BoardService {
 		int result = noticeDAO.boardWrite(boardVO);
 		
 		for(MultipartFile file : files) {
+			if(file.getSize()>0) {
 			BoardFileVO boardFileVO = new BoardFileVO();
 			String fileName = fileSaver.saveByTransfer(file, path);
 			boardFileVO.setNum(boardVO.getNum());
@@ -69,6 +70,7 @@ public class NoticeService implements BoardService {
 			boardFileVO.setBoard(1);
 			
 			boardFileDAO.fileInsert(boardFileVO);
+			}
 		}
 		return result;//
 	}

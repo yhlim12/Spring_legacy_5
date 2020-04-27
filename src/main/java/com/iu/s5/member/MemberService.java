@@ -75,4 +75,8 @@ public class MemberService {
 	public MemberVO memberIdCheck(MemberVO memberVO)throws Exception{
 		return memberDAO.memberIdCheck(memberVO);
 	}
+	
+	public int memberDeletes(List<String> list)throws Exception{
+		return memberDAO.memberDeletes(list);
+	}
 }

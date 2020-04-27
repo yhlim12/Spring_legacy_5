@@ -19,6 +19,8 @@ public class BoardFileDAO {
 	public int fileInsert(BoardFileVO boardFileVO) throws Exception{
 		return session.insert(NAMESPACE+"fileInsert",boardFileVO);
 	}
-	
+	public int fileDelete(long fileNum)throws Exception{
+		return session.delete(NAMESPACE+"fileDelete",fileNum);
+	}
 	
 }

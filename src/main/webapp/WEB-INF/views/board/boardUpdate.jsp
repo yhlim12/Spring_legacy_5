@@ -29,15 +29,25 @@
 			
 				<div class="form-group">
 				<label for="writer">writer:</label> <input type="text" class="form-control"
-					id="writer" placeholder="Enter writer" disabled="disabled"" value="${vo.writer}" name="writer">
+					id="writer" placeholder="Enter writer" disabled="disabled" value="${vo.writer}" name="writer">
 			</div>
 
 			<div class="form-group">
 				<label for="contents">CONTENTS:</label> <textarea class="form-control"
 				 id="contents" placeholder="Enter contents" name="contents">${vo.contents}</textarea>
 			</div>
+			
+		 	<div class="form-group" >
+		  		<label for="files">Files:</label>
+			  	<c:forEach items="${vo.boardFileVOs}" var="fileVO">
+				  	<p>${fileVO.oriName}<i class="glyphicon glyphicon-remove remove fileDelete" id="${fileVO.fileNum}"></i></p>
+			  	
+			  	</c:forEach>
+			  	
+		  	
+		  </div>
+		   
 
-		
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
 		
@@ -47,6 +57,21 @@
 		  $('#contents').summernote({
 			  lang: 'ko-KR'
 		 });
+		  
+				  
+		  $(".fileDelete").click(function() {
+			  var s = $(this);
+			$.post("../boardFile/fileDelete", {fileNum : $(this).attr("id")} , function(result) {
+				alert(result.trim());
+				alert(result.trim()>0);	
+				if(result.trim()>0){
+					s.parent().remove();
+				}else{
+					alert("File Delete Fail");
+				}
+			});
+		});
+		  
 		</script>
 
 </body>

@@ -1,5 +1,7 @@
 package com.iu.s5.member;
 
+import java.sql.Array;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -96,10 +99,11 @@ public class MemberController {
 		return mv;
 	}
 
+
 	@RequestMapping(value = "memberMypage")
 	public void memberPage() throws Exception {
+		
 	}
-
 	@RequestMapping(value = "memberLogout")
 	public String memberLogout(HttpSession session) throws Exception {
 		session.invalidate();
@@ -171,6 +175,39 @@ public class MemberController {
 		mv.addObject("result", result);
 		mv.setViewName("common/ajaxResult");
 		
+		return mv;
+	}
+	
+	@GetMapping("memberDeletes")
+	public ModelAndView memberDeletes(String[] ids)throws Exception{
+//		for(String id : ids) {
+//			MemberVO memberVO = new MemberVO();
+//			memberVO.setId(id);
+//			memberService.memberDelete(memberVO);
+//		}
+		//배열을 List로 변환 
+		ModelAndView mv = new ModelAndView();
+		
+		List<String> list = Arrays.asList(ids);
+		int result = memberService.memberDeletes(list);
+		mv.addObject("result",result);
+		mv.setViewName("common/ajaxResult");
+		
+		
+		return mv;
+		
+	}
+	
+	@GetMapping("memberLists")
+	public ModelAndView memberLists(Pager pager)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<MemberVO> ar = memberService.memberList(pager);
+		
+		mv.addObject("list", ar);
+		mv.addObject("pager",pager);
+		mv.setViewName("member/memberLists");
+
 		return mv;
 	}
 

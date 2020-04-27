@@ -63,14 +63,29 @@
 <script type="text/javascript">
 	$("#id").blur(function() {
 		var id = $("#id").val();
-		$.post("./memberIdCheck",{id:id}, function(result) {
+	/* 	$.post("./memberIdCheck",{id:id}, function(result) {
 			result = result.trim();
 			if(result==0){
 				alert("이미 존재하는 아이디입니다.");
 			}else{
 				alert("사용가능한 아이디입니다.")
 			}
+		}); */
+		
+		$.ajax({
+			type: "post",	//method 형식
+			url: "./memberIdCheck" ,//URL 주소
+			data : {
+				id:id
+			}, //parameter 
+			success : function(data){
+				alert(data);
+			},
+			error : function () {
+				alert("error 발생");
+			}
 		});
+		
 	});
 	
 	

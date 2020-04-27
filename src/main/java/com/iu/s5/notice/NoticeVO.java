@@ -9,6 +9,7 @@ import com.iu.s5.board.file.BoardFileDAO;
 import com.iu.s5.board.file.BoardFileVO;
 
 public class NoticeVO extends BoardVO {
+	
 	private List<BoardFileVO> boardFileVOs;
 
 	public List<BoardFileVO> getBoardFileVOs() {
