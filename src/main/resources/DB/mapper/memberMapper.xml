@@ -9,9 +9,9 @@
 		<id column="id" property="id"/>
 		<result column="password" property="password"/>
 		<result column="name" property="name"/>
+		<result column="age" property="age"/>
 		<result column="email" property="email"/>
 		<result column="phone" property="phone"/>
-		<result column="age" property="age"/>
 		<!-- 1개인 경우 -->
 		<association property="memberFileVO" javaType="MemberFileVO">
 			<result column="filename" property="filename"/>
