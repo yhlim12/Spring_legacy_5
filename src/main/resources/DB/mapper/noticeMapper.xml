@@ -9,8 +9,8 @@
 		<result column="title" property="title"/>
 		<result column="writer" property="writer"/>
 		<result column="regDate" property="regDate"/>
-		<result column="contents" property="contents"/>
 		<result column="hit" property="hit"/>
+		<result column="contents" property="contents"/>
 		
 		<collection property="boardFileVOs" javaType="List" ofType="BoardFileVO">
 			<id column="fileNum" property="fileNum"/>
@@ -77,7 +77,7 @@
 	</select>
 
 	 <insert id="boardWrite" parameterType="NoticeVO">
-		 insert into notice values(#{num},#{title},#{writer},#{contents}, sysdate,0)
+		 insert into notice values(#{num},#{title},#{writer},sysdate, 0, #{contents})
 	 </insert>
 	 
 	 <delete id="boardDelete" parameterType="Long">
