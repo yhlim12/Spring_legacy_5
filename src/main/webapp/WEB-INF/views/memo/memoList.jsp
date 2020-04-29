@@ -69,7 +69,7 @@
 				writer : writer,
 				contents : contents
 			}, function(result) {
-				result = result.trim();
+				//result = result.trim();
 				if (result > 0) {
 					location.reload();
 				} else {

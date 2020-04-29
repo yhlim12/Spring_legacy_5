@@ -15,17 +15,36 @@
 <body>
 	<c:import url="./template/header.jsp"></c:import>
 	<button id="btn">BUTTON</button>
+	<button id="btn2">BUTTON2</button>
+	
+	
 	<script type="text/javascript">
 		$("#btn").click(function() {
-			//jQuery Ajax
-			//GET
-			alert("start");
-			$.get("./notice/noticeSelect?num=100", function(result) {
-				console.log(result);
+
+			$.get("./json/json1", function(data) {
+			//0. data가 String 인지 Json Object인지 판별
+			// console.log(data); "name":"iu" - > string
+			// console.log(gata); object -> json Object
+			
+			//1. String 이라면 Json Object 변환
+			//data = data.trim();
+			//data = JSON.parse(data);
+			console.log(data);
+			
+			console.log(data.num);
+			console.log(data.title);
+			});			
+		});
+		$("#btn2").click(function() {
+			$.get("https://api.manana.kr/exchange/rate.json?base=KRW&code=KRW,USD,JPY",function(data){
+				
+				
+				console.log(data[1].rate);
 			});
-			alert("finish");
+			
 			
 		});
+		
 	</script>
 	
 
