@@ -26,6 +26,36 @@
 		<beans:property name="order" value="0"></beans:property>
 	</beans:bean>
 	
+	
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/notice/*"/>
+			<exclude-mapping path="/notice/noticeList"/>
+			<exclude-mapping path="/notice/noticeSelect"/>
+			<beans:ref bean="noticeInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/member/memberMypage"/>
+			<beans:ref bean="memberInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/qna/*"/>
+			<exclude-mapping path="/qna/qnaList"/>
+			<beans:ref bean="qnaInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<!-- URL Pattern -->
+			<mapping path="/*"/>
+			
+			<!-- Interceptor class -->
+			<beans:bean class="com.iu.s5.interceptor.TestInterceptor">	</beans:bean>
+		</interceptor>
+	</interceptors>
+	
 	<context:component-scan base-package="com.iu.s5" />
 	
 	
