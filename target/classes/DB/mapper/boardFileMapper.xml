@@ -6,7 +6,7 @@
 <mapper namespace="com.iu.s5.board.file.BoardFileDAO">
 
 	<insert id="fileInsert" parameterType="BoardFileVO">
-		INSERT INTO BOARDFILE VALUES(file_seq.nextval,#{num},#{fileName},#{oriName},#{board})
+		INSERT INTO BOARDFILE VALUES(1,#{num},#{fileName},#{oriName},#{board})
 	</insert>
 	
 	<select id="fileSelect" parameterType="BoardFileVO" resultType="BoardFileVO">
