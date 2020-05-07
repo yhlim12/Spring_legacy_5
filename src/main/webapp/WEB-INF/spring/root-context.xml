@@ -2,14 +2,17 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
 	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" id="propertyPlaceholderConfigurer">
 		<property name="locations" value="classpath:DB/config/*.properties"></property>
 	</bean>
 	 -->
+	 
 	 
 	 <util:properties location="classpath:DB/config/db.properties" id="db">
 	 	
@@ -42,5 +45,6 @@
 		<!-- 총 파일의 용량 제한 단위 byte -->
 		<property name="maxUploadSize" value="104857600"></property>
 	</bean>
+
 	
 </beans>
