@@ -24,7 +24,7 @@
 			<button id="btn" class="btn btn-danger">WRITE</button>
 		</div>
 
-		<divclass="row">
+		<div class="row">
 			<table class="table table-bordered" id="result">
 				<tr>
 					<td>Num</td>

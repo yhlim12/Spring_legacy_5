@@ -92,7 +92,7 @@ public class NoticeController {
 			mv.setViewName("redirect:./noticeList");
 		} else {
 			mv.addObject("result", "Write Fail");
-			mv.addObject("p ath", "./noticeList");
+			mv.addObject("path", "./noticeList");
 			mv.setViewName("common/result");
 		}
 		return mv;
